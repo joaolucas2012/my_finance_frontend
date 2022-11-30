@@ -1,12 +1,5 @@
-export const Information = () => {
-  return (
-    <section>
-      <div>
-        <div>
-          <label htmlFor="initial-date">Data inicial</label>
-          <input type="date" name="initial-date" />
-        </div>
-      </div>
-    </section>
-  );
+import { Container } from "./styles";
+
+export const Information = (props) => {
+  return <Container>{props.children}</Container>;
 };
