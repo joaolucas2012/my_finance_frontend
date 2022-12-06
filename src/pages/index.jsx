@@ -2,6 +2,7 @@ import { Header } from "../components/Header";
 import { Information } from "../components/Information";
 import { DateContainer } from "../components/DateContainer";
 import { DataContainer } from "../components/DataContainer";
+import { CategoryContainer } from "../components/CategoryContainer";
 import { InputContainer } from "../components/InputContainer";
 import { InfoTable } from "../components/InfoTable";
 import { Button } from "../components/Button";
@@ -21,7 +22,10 @@ export const Home = () => {
 
       <Information>
         <DateContainer title={"Data"} />
-        <DateContainer title={"Categoria"} />
+        <CategoryContainer title={"Categoria"}>
+          <option value="Ganho">Ganho</option>
+          <option value="Despesas">Despesas</option>
+        </CategoryContainer>
         <InputContainer title={"Título"} />
         <InputContainer title={"Valor"} />
         <Button>Adicionar</Button>

@@ -5,7 +5,7 @@ export const StyledHeader = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 10rem;
 `;
 
