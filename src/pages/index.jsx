@@ -3,6 +3,7 @@ import { Information } from "../components/Information";
 import { DateContainer } from "../components/DateContainer";
 import { DataContainer } from "../components/DataContainer";
 import { InputContainer } from "../components/InputContainer";
+import { InfoTable } from "../components/InfoTable";
 import { Button } from "../components/Button";
 
 export const Home = () => {
@@ -10,8 +11,8 @@ export const Home = () => {
     <>
       <Header />
       <Information>
-        <DateContainer name={"Data Inicial"} />
-        <DateContainer name={"Data Final"} />
+        <DateContainer title={"Data Inicial"} />
+        <DateContainer title={"Data Final"} />
         <Button>Buscar</Button>
         <DataContainer title={"Receita"} value={"10000"} />
         <DataContainer title={"Despesas"} value={"112"} />
@@ -25,6 +26,8 @@ export const Home = () => {
         <InputContainer title={"Valor"} />
         <Button>Adicionar</Button>
       </Information>
+
+      <InfoTable />
     </>
   );
 };
