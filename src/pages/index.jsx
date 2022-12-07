@@ -1,37 +1,32 @@
 import { Header } from "../components/Header";
 import { Information } from "../components/Information";
-import { DateContainer } from "../components/DateContainer";
-import { DataContainer } from "../components/DataContainer";
-import { CategoryContainer } from "../components/CategoryContainer";
-import { InputContainer } from "../components/InputContainer";
+import { AddFinanceContainer } from "../components/AddFinanceContainer";
 import { InfoTable } from "../components/InfoTable";
-import { Button } from "../components/Button";
+import { api } from "../services/api.js";
+import { useState, useEffect } from "react";
 
 export const Home = () => {
+  const handlePostItems = (item) => {
+    const data = item.data;
+    api
+      .post("http://localhost:8080/create/finance", data)
+      .then((response) => console.log(response));
+  };
+
+  const [financesList, setFinancesList] = useState([]);
+
+  useEffect(() => {
+    api.get("http://localhost:8080/list/finance/0").then((response) => {
+      setFinancesList(response.data.rows);
+    });
+  }, []);
+
   return (
     <>
       <Header />
-      <Information>
-        <DateContainer title={"Data Inicial"} />
-        <DateContainer title={"Data Final"} />
-        <Button>Buscar</Button>
-        <DataContainer title={"Receita"} value={"10000"} />
-        <DataContainer title={"Despesas"} value={"112"} />
-        <DataContainer title={"Balanço"} value={"9888"} />
-      </Information>
-
-      <Information>
-        <DateContainer title={"Data"} />
-        <CategoryContainer title={"Categoria"}>
-          <option value="Ganho">Ganho</option>
-          <option value="Despesas">Despesas</option>
-        </CategoryContainer>
-        <InputContainer title={"Título"} />
-        <InputContainer title={"Valor"} />
-        <Button>Adicionar</Button>
-      </Information>
-
-      <InfoTable />
+      <Information />
+      <AddFinanceContainer postItems={handlePostItems} />
+      <InfoTable financesList={financesList} />
     </>
   );
 };

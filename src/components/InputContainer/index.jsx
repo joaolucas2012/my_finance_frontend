@@ -4,7 +4,7 @@ export const InputContainer = (props) => {
   return (
     <Container>
       <Title>{props.title}</Title>
-      <StyledInput type="text" />
+      <StyledInput type="text" {...props} />
     </Container>
   );
 };

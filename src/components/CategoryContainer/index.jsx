@@ -4,7 +4,7 @@ export const CategoryContainer = (props) => {
   return (
     <Container>
       <Title>{props.title}</Title>
-      <StyledSelect>{props.children}</StyledSelect>
+      <StyledSelect {...props}>{props.children}</StyledSelect>
     </Container>
   );
 };

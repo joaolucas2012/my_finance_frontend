@@ -4,7 +4,7 @@ export const DateContainer = (props) => {
   return (
     <Container>
       <Title>{props.title}</Title>
-      <StyledInput type="date" />
+      <StyledInput type="date" {...props} />
     </Container>
   );
 };
