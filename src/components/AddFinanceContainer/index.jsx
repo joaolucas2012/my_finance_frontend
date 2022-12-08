@@ -15,11 +15,7 @@ export const AddFinanceContainer = ({ postItems }) => {
 
   useEffect(() => {
     api.get("http://localhost:8080/list/category/0").then((response) => {
-      // var array = response.data["Category"].rows;
-      // for (let i = 0; i < array.length; i++) {
-      //   console.log(`${array[i].id}, ${array[i].description}`);
-      // }
-      setCategoryName(response.data["Category"].rows);
+      setCategoryName(response.data.Category.rows);
     });
   }, []);
 

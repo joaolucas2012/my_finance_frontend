@@ -42,12 +42,15 @@ export const InfoTable = ({ financesList }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableItem
-              date={"2022-12-07"}
-              categoryId={"Eventualidades"}
-              description={"Pandora"}
-              value={"20"}
-            />
+            {financesList.map((finance) => (
+              <TableItem
+                key={finance.id}
+                date={finance.date}
+                categoryId={finance.Category.description}
+                description={finance.title}
+                value={finance.value}
+              />
+            ))}
           </TableBody>
         </Table>
       </TableContainer>

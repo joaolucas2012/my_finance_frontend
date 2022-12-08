@@ -6,6 +6,8 @@ import { api } from "../services/api.js";
 import { useState, useEffect } from "react";
 
 export const Home = () => {
+  const [financesList, setFinancesList] = useState([]);
+
   const handlePostItems = (item) => {
     const data = item.data;
     api
@@ -13,11 +15,9 @@ export const Home = () => {
       .then((response) => console.log(response));
   };
 
-  const [financesList, setFinancesList] = useState([]);
-
   useEffect(() => {
     api.get("http://localhost:8080/list/finance/0").then((response) => {
-      setFinancesList(response.data.rows);
+      setFinancesList(response.data.Finance.rows);
     });
   }, []);
 
