@@ -13,12 +13,6 @@ export const AddFinanceContainer = ({ postItems }) => {
   const [value, setValue] = useState("");
   const [categoryName, setCategoryName] = useState([]);
 
-  useEffect(() => {
-    api.get("http://localhost:8080/list/category/0").then((response) => {
-      setCategoryName(response.data.Category.rows);
-    });
-  }, []);
-
   const submitItems = () => {
     const data = {
       date,
@@ -28,6 +22,12 @@ export const AddFinanceContainer = ({ postItems }) => {
     };
     postItems({ data });
   };
+
+  useEffect(() => {
+    api.get("http://localhost:8080/list/category/4").then((response) => {
+      setCategoryName(response.data.Category.rows);
+    });
+  }, [postItems]);
 
   return (
     <Information>
