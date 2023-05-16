@@ -9,6 +9,5 @@ export const Container = styled.div`
   height: 18vh;
   border-radius: 5px;
   margin: 0 9.5vw;
-  margin-top: -1.1rem;
-  margin-bottom: 6rem;
+  margin-top: 7rem;
 `;

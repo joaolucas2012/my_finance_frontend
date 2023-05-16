@@ -5,8 +5,9 @@ export const ButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #008000;
-  width: 15%;
-  height: 30px;
+  padding: 18px;
+  width: 8%;
+  height: 18%;
   border-radius: 5px;
   color: #fff;
 

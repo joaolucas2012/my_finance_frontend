@@ -6,9 +6,9 @@ export const Container = styled.div`
   justify-content: space-evenly;
   align-items: center;
   width: 80vw;
-  height: 20vh;
+  height: 15vh;
   border-radius: 10px;
   margin: 0 9.5vw;
   margin-top: -4rem;
-  margin-bottom: 6rem;
+  margin-bottom: 4.7rem;
 `;

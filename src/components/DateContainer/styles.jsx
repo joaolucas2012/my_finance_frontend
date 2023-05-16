@@ -5,16 +5,17 @@ export const Container = styled.div`
   justify-content: center;
   text-align: center;
   align-items: center;
-  width: 15%;
+  width: 10%;
   height: 55%;
-  padding: 5px;
+  padding: 15px;
   background-color: #008000;
   border-radius: 5px;
   color: #fff;
 `;
 
 export const StyledInput = styled.input`
-  height: 30px;
+  height: 50%;
+  width: 95%;
 `;
 
 export const Title = styled.label`

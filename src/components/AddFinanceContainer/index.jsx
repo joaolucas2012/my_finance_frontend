@@ -21,10 +21,13 @@ export const AddFinanceContainer = ({ postItems }) => {
       value,
     };
     postItems({ data });
+    setDate("");
+    setTitle("");
+    setValue("");
   };
 
   useEffect(() => {
-    api.get("http://localhost:8080/list/category/4").then((response) => {
+    api.get("http://localhost:8080/list/category").then((response) => {
       setCategoryName(response.data.Category.rows);
     });
   }, [postItems]);

@@ -5,9 +5,9 @@ export const Container = styled.div`
   justify-content: center;
   text-align: center;
   align-items: center;
-  width: 15%;
+  width: 12%;
   height: 55%;
-  padding: 5px;
+  padding: 1.6%;
   background-color: #008000;
   border-radius: 5px;
   color: #fff;

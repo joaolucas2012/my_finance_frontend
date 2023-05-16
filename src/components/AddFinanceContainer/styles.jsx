@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const Information = styled.div`
   background-color: #000;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   width: 80vw;
-  height: 20vh;
+  height: 18vh;
   border-radius: 10px;
   margin: 0 9.5vw;
   margin-top: -4rem;

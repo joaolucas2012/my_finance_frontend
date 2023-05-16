@@ -10,9 +10,12 @@ export const Home = () => {
 
   const handlePostItems = (item) => {
     const data = item.data;
-    api
-      .post("http://localhost:8080/create/finance", data)
-      .then((response) => console.log(response));
+    api.post("http://localhost:8080/create/finance", data).then((response) => {
+      console.log(response);
+      api.get("http://localhost:8080/list/finance/0").then((response) => {
+        setFinancesList(response.data.Finance.rows);
+      });
+    });
   };
 
   useEffect(() => {
