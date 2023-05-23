@@ -15,6 +15,10 @@ export const Container = styled.div`
 
 export const StyledSelect = styled.select`
   height: 30px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Title = styled.label`
