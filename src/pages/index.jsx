@@ -4,6 +4,9 @@ import { AddFinanceContainer } from "../components/AddFinanceContainer";
 import { InfoTable } from "../components/InfoTable";
 import { api } from "../services/api.js";
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 export const Home = () => {
   const [financesList, setFinancesList] = useState([]);
@@ -12,11 +15,37 @@ export const Home = () => {
 
   const handlePostItems = (item) => {
     const data = item.data;
+
     api.post("http://localhost:8080/create/finance", data).then((response) => {
-      console.log(response);
       api.get("http://localhost:8080/list/finance/0").then((response) => {
         setFinancesList(response.data.Finance.rows);
       });
+
+      const success = response.status === 200 ? true : false;
+
+      if (success) {
+        toast.success("Movimentação adicionada com sucesso!", {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      } else {
+        toast.error("Falha ao adicionar movimentação!", {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
     });
   };
 
@@ -64,6 +93,18 @@ export const Home = () => {
       />
       <AddFinanceContainer postItems={handlePostItems} />
       <InfoTable financesList={financesList} />
+      <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 };
