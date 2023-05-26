@@ -45,7 +45,13 @@ export const InfoTable = ({ financesList }) => {
             {financesList.map((finance) => (
               <TableItem
                 key={finance.id}
-                date={finance.date}
+                date={`${finance.date.substring(
+                  8,
+                  10
+                )}/${finance.date.substring(5, 7)}/${finance.date.substring(
+                  0,
+                  4
+                )}`}
                 categoryId={finance.Category.description}
                 description={finance.title}
                 value={finance.value}

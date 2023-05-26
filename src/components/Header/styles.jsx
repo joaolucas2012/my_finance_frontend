@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  background-color: #111;
+  background-image: linear-gradient(to left, rgb(16, 58, 1), rgb(41, 161, 11));
   display: flex;
   justify-content: center;
   align-items: center;
