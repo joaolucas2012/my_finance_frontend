@@ -1,4 +1,5 @@
 import * as React from "react";
+import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
@@ -6,17 +7,18 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import { TableItem } from "../TableItem";
-import { Container } from "./styles";
 
 export const InfoTable = ({ financesList }) => {
   return (
-    <Container>
-      <TableContainer sx={{ color: "#FFF", borderRadius: 3 }}>
-        <Table aria-label="simple table">
+    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+      <TableContainer
+        sx={{ color: "#FFF", borderRadius: 3, width: "81%", margin: "0 auto" }}
+      >
+        <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               <TableCell
-                sx={{ backgroundColor: "#000", color: "#FFF" }}
+                sx={{ backgroundColor: "#000", color: "#FFF", lineHeight: 1 }}
                 align="center"
               >
                 Data
@@ -60,6 +62,6 @@ export const InfoTable = ({ financesList }) => {
           </TableBody>
         </Table>
       </TableContainer>
-    </Container>
+    </Paper>
   );
 };

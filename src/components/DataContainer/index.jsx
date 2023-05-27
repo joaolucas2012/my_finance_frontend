@@ -4,7 +4,9 @@ export const DataContainer = (props) => {
   return (
     <Container>
       <Title>{props.title}</Title>
-      <Value>{props.value}</Value>
+      <Value title={props.title} text={props.value}>{`R$ ${parseFloat(
+        props.value
+      ).toFixed(2)}`}</Value>
     </Container>
   );
 };

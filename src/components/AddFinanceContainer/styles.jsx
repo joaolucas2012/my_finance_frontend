@@ -10,5 +10,5 @@ export const Information = styled.div`
   border-radius: 10px;
   margin: 0 9.5vw;
   margin-top: -4rem;
-  margin-bottom: 6rem;
+  margin-bottom: 0.9rem;
 `;

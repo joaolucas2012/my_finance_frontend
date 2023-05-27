@@ -12,11 +12,11 @@ export const Information = ({ ...props }) => {
     <Container>
       <DateContainer
         onChange={(e) => setFirstDate(e.target.value)}
-        title={firstDate}
+        title={"Data inicial"}
       />
       <DateContainer
         onChange={(e) => setSecondDate(e.target.value)}
-        title={secondDate}
+        title={"Data final"}
       />
       <Button onClick={() => props.handleSearch(firstDate, secondDate)}>
         Buscar

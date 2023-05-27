@@ -16,4 +16,9 @@ export const ButtonContainer = styled.div`
     cursor: pointer;
     transition: 0.2s ease-out;
   }
+
+  @media (max-width: 768px) {
+    width: 35%;
+    height: 10%;
+  }
 `;
