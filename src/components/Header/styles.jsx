@@ -8,7 +8,7 @@ export const StyledHeader = styled.header`
   width: 100%;
   height: 10rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 425px) {
     height: 6rem;
   }
 `;
@@ -18,7 +18,11 @@ export const StyledH2 = styled.h2`
   font-size: 2rem;
   margin-top: -2rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 425px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 375px) {
     font-size: 1.5rem;
   }
 `;

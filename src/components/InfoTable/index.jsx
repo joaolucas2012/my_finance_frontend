@@ -12,7 +12,7 @@ export const InfoTable = ({ financesList }) => {
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer
-        sx={{ color: "#FFF", borderRadius: 3, width: "81%", margin: "0 auto" }}
+        sx={{ color: "#FFF", borderRadius: 3, width: "80%", margin: "0 auto" }}
       >
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

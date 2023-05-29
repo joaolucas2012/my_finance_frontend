@@ -17,8 +17,22 @@ export const ButtonContainer = styled.div`
     transition: 0.2s ease-out;
   }
 
+  @media (max-width: 1024px) {
+    width: 11%;
+  }
+
   @media (max-width: 768px) {
-    width: 35%;
+    width: 13%;
     height: 10%;
+  }
+
+  @media (max-width: 425px) {
+    width: 30%;
+    height: 5%;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 320px) {
+    width: 35%;
   }
 `;

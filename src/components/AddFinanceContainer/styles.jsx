@@ -11,4 +11,24 @@ export const Information = styled.div`
   margin: 0 9.5vw;
   margin-top: -4rem;
   margin-bottom: 0.9rem;
+
+  @media (max-width: 1024px) {
+    height: 16vh;
+    justify-content: space-evenly;
+  }
+
+  @media (max-width: 768px) {
+    height: 10vh;
+  }
+
+  @media (max-width: 425px) {
+    height: 40vh;
+    flex-direction: column;
+    padding: 3% 0 3% 0;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 375px) {
+    height: 45vh;
+  }
 `;

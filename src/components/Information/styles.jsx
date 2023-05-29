@@ -12,9 +12,28 @@ export const Container = styled.div`
   margin-top: -4rem;
   margin-bottom: 4.7rem;
 
+  @media (max-width: 1024px) {
+    height: 16vh;
+  }
+
+  @media (max-width: 768px) {
+    height: 11vh;
+  }
+
+  @media (max-width: 425px) {
+    width: 80vw;
+    height: 40vh;
+    padding-top: 3%;
+    margin: 0 9.5vw;
+    margin-top: -2rem;
+    margin-bottom: 4.8rem;
+    flex-direction: column;
+    font-size: 1rem;
+  }
+
   @media (max-width: 320px) {
     width: 80vw;
-    height: 60vh;
+    height: 40vh;
     padding-top: 3%;
     margin: 0 9.5vw;
     margin-top: -2rem;

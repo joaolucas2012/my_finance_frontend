@@ -12,11 +12,22 @@ export const Container = styled.div`
   font-size: 1.2rem;
   color: #fff;
 
-  @media (max-width: 320px) {
+  @media (max-width: 1024px) {
+    width: 13%;
     font-size: 1rem;
-    width: 70%;
+    justify-content: space-evenly;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    justify-content: space-evenly;
+  }
+
+  @media (max-width: 425px) {
+    font-size: 0.9rem;
+    width: 50%;
     height: 30%;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
   }
 `;
@@ -37,8 +48,16 @@ export const Value = styled.label`
     }
   }};
 
-  @media (max-width: 320px) {
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 425px) {
     margin-top: 0px;
-    margin-left: 5%;
+    font-size: 0.9rem;
   }
 `;
