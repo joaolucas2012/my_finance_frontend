@@ -16,61 +16,47 @@ export const Home = () => {
   const handlePostItems = (item) => {
     const data = item.data;
 
-    api.post("http://localhost:8080/create/finance", data).then((response) => {
-      api.get("http://localhost:8080/list/finance/0").then((response) => {
-        setFinancesList(response.data.Finance.rows);
-      });
+    if (
+      [data.date, data.categoryId, data.title, data.value].some(
+        (variable) => variable === ""
+      ) ||
+      data.value === "0"
+    ) {
+      makeNotification(
+        "Forneça todos os dados válidos necessários para criar um lançamento!",
+        false
+      );
+    } else {
+      api
+        .post("http://localhost:8080/create/finance", data)
+        .then((response) => {
+          api.get("http://localhost:8080/list/finance").then((resp) => {
+            setFinancesList(resp.data.Finance.rows);
+            makeBalance(resp.data);
+          });
 
-      const success = response.status === 200 ? true : false;
-
-      if (success) {
-        toast.success("Movimentação adicionada com sucesso!", {
-          position: "top-right",
-          autoClose: 1500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
+          response.status === 200
+            ? makeNotification("Movimentação adicionada com sucesso!", true)
+            : makeNotification("Falha ao adicionar movimentação!", false);
         });
-      } else {
-        toast.error("Falha ao adicionar movimentação!", {
-          position: "top-right",
-          autoClose: 1500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-      }
-    });
+    }
   };
 
   const handleSearchFinancesByDate = (firstDate, secondDate) => {
     api
-      .get(`http://localhost:8080/list/finance/${firstDate}/${secondDate}/0`)
+      .get(`http://localhost:8080/list/finance/${firstDate}/${secondDate}`)
       .then((response) => {
-        setFinancesList(response.data.Finance.rows);
-
-        let totalRevenue = 0;
-        let totalExpense = 0;
-
-        for (var row of response.data.Finance.rows) {
-          row.categoryId === 13
-            ? (totalExpense += row.value)
-            : (totalRevenue += row.value);
+        if (response.data.Finance.rows.length !== 0) {
+          setFinancesList(response.data.Finance.rows);
+          makeBalance(response.data);
+        } else {
+          makeNotification("Nenhum dado encontrado no período!", false);
         }
-
-        setRevenue(totalRevenue);
-        setExpense(totalExpense);
       });
   };
 
   useEffect(() => {
-    api.get("http://localhost:8080/list/finance/0").then((response) => {
+    api.get("http://localhost:8080/list/finance").then((response) => {
       setFinancesList(response.data.Finance.rows);
     });
 
@@ -82,6 +68,40 @@ export const Home = () => {
       setExpense(response.data.balance);
     });
   }, []);
+
+  /** Função para montar o balanço baseado nas entradas de dados em dinheiro. */
+  const makeBalance = (data) => {
+    let totalRevenue = 0;
+    let totalExpense = 0;
+
+    for (var row of data.Finance.rows) {
+      row.categoryId === 13
+        ? (totalExpense += row.value)
+        : (totalRevenue += row.value);
+    }
+
+    setRevenue(totalRevenue);
+    setExpense(totalExpense);
+  };
+
+  /** Função para montar uma toast notification baseada na mensagem fornecida
+   * e no tipo da notificação, recebidos por parâmetro. Se success for true,
+   * monta um toast.success, e em caso contrário, monta um toast.error.
+   */
+  const makeNotification = (message, success) => {
+    const options = { false: toast.error, true: toast.success };
+
+    options[success](message, {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
 
   return (
     <>
