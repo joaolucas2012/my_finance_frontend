@@ -1,6 +1,6 @@
 import { Container, StyledSelect, Title } from "./styles";
 
-export const CategoryContainer = (props) => {
+export const SelectContainer = (props) => {
   return (
     <Container>
       <Title>{props.title}</Title>

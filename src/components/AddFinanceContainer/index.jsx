@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { DateContainer } from "../DateContainer";
-import { CategoryContainer } from "../CategoryContainer";
+import { SelectContainer } from "../SelectContainer";
 import { InputContainer } from "../InputContainer";
 import { Button } from "../Button";
 import { api } from "../../services/api.js";
@@ -39,7 +39,7 @@ export const AddFinanceContainer = ({ postItems }) => {
         value={date}
         onChange={(e) => setDate(e.target.value)}
       />
-      <CategoryContainer
+      <SelectContainer
         title={"Categoria"}
         value={categoryId}
         onChange={(e) => setCategoryId(e.target.value)}
@@ -49,7 +49,7 @@ export const AddFinanceContainer = ({ postItems }) => {
             {category.description}
           </option>
         ))}
-      </CategoryContainer>
+      </SelectContainer>
       <InputContainer
         title={"Título"}
         value={title}
