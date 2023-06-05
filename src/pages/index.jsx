@@ -1,3 +1,4 @@
+import { SideBarHeader } from "../components/SideBarHeader";
 import { Header } from "../components/Header";
 import { Information } from "../components/Information";
 import { AddFinanceContainer } from "../components/AddFinanceContainer";
@@ -145,6 +146,8 @@ export const Home = () => {
 
   return (
     <>
+      <SideBarHeader />
+
       <Header />
 
       <Information
