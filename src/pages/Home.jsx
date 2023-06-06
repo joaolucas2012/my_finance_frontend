@@ -3,9 +3,8 @@ import { Header } from "../components/Header";
 import { Information } from "../components/Information";
 import { AddFinanceContainer } from "../components/AddFinanceContainer";
 import { InfoTable } from "../components/InfoTable";
-import { ModalAddCategory } from "../components/ModalAddCategory";
 import { api } from "../services/api.js";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -14,9 +13,6 @@ export const Home = () => {
   const [financesList, setFinancesList] = useState([]);
   const [revenue, setRevenue] = useState("");
   const [expense, setExpense] = useState("");
-  const [modalVisibility, setModalVisibility] = useState(true);
-
-  const modalRef = useRef(null);
 
   const handleAddFinance = (item) => {
     const data = item.data;
@@ -41,24 +37,6 @@ export const Home = () => {
         response.status === 200
           ? makeNotification("Movimentação adicionada com sucesso!", true)
           : makeNotification("Falha ao adicionar movimentação!", false);
-      });
-    }
-  };
-
-  const handleAddCategory = (data) => {
-    if (data.description === "") {
-      makeNotification(
-        "Forneça um nome ou descrição para a nova categoria!",
-        false
-      );
-    } else {
-      api.post("/create/category", data).then((response) => {
-        response.status === 200
-          ? makeNotification("Categoria adicionada com sucesso!", true)
-          : makeNotification(
-              "Falha ao adicionar categoria! Por favor, tente mais tarde!",
-              false
-            );
       });
     }
   };
@@ -89,22 +67,6 @@ export const Home = () => {
       setExpense(response.data.balance);
     });
   }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        setModalVisibility(false);
-      }
-    };
-
-    if (modalVisibility) {
-      document.addEventListener("click", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [modalVisibility]);
 
   /** Função para montar o balanço baseado nas entradas de dados em dinheiro. */
   const makeBalance = (data) => {
@@ -155,12 +117,6 @@ export const Home = () => {
       <AddFinanceContainer postItems={handleAddFinance} />
 
       <InfoTable financesList={financesList} />
-
-      <ModalAddCategory
-        ref={modalRef}
-        isOpen={modalVisibility}
-        addCategory={handleAddCategory}
-      />
 
       <ToastContainer
         position="top-right"

@@ -11,25 +11,21 @@ export const ModalAddCategory = forwardRef((props, ref) => {
     props.addCategory(data);
   };
 
-  if (props.isOpen) {
-    return (
-      <Container>
-        <Wrapper ref={ref}>
-          <StyledTitle>Adicionar Categoria</StyledTitle>
-          <StyledDiv>
-            <AddCategoryContainer
-              title={"Nome: "}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <Button style={{ width: "20%" }} onClick={submitItem}>
-              Adicionar
-            </Button>
-          </StyledDiv>
-        </Wrapper>
-      </Container>
-    );
-  } else {
-    return null;
-  }
+  return props.isOpen ? (
+    <Container>
+      <Wrapper ref={ref}>
+        <StyledTitle>Adicionar Categoria</StyledTitle>
+        <StyledDiv>
+          <AddCategoryContainer
+            title={"Nome: "}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <Button style={{ width: "20%" }} onClick={submitItem}>
+            Adicionar
+          </Button>
+        </StyledDiv>
+      </Wrapper>
+    </Container>
+  ) : null;
 });

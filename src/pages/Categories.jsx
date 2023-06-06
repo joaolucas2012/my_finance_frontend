@@ -1,23 +1,25 @@
 import { useState, useEffect } from "react";
-import { CategoriesTable } from "../components/CategoriesTable";
+import { CategoriesList } from "../components/CategoriesList";
 import { Header } from "../components/Header";
 import { SideBarHeader } from "../components/SideBarHeader";
+
 import { api } from "../services/api.js";
 
 export const Categories = () => {
-  const [categoriesList, setCategoriesList] = useState([]);
+  const [listOfCategories, setListOfCategories] = useState([]);
 
   useEffect(() => {
     api.get("/list/category").then((resp) => {
-      setCategoriesList(resp.data.Category.rows);
+      setListOfCategories(resp.data.Category.rows);
     });
+    2;
   }, []);
 
   return (
     <>
       <SideBarHeader />
       <Header title="Categorias" />
-      <CategoriesTable categoriesList={categoriesList} />
+      <CategoriesList categoriesList={listOfCategories} />
     </>
   );
 };

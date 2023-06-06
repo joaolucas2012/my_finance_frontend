@@ -2,9 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 60px;
+  position: fixed;
+  width: 100%;
   display: flex;
   background-color: #000;
-  box-shadow: 0 0 20px 3px;
+  box-shadow: 0 0 10px 3px;
+  z-index: 1000;
 
   > svg {
     position: fixed;

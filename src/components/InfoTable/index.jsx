@@ -6,13 +6,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
-import { TableItem } from "../TableItem";
+import { FinanceTableItem } from "../FinanceTableItem";
 
 export const InfoTable = ({ financesList }) => {
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer
-        sx={{ color: "#FFF", borderRadius: 3, width: "80%", margin: "0 auto" }}
+        sx={{
+          color: "#FFF",
+          borderRadius: 3,
+          width: "80%",
+          margin: "0 auto",
+        }}
       >
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -45,7 +50,7 @@ export const InfoTable = ({ financesList }) => {
           </TableHead>
           <TableBody>
             {financesList.map((finance) => (
-              <TableItem
+              <FinanceTableItem
                 key={finance.id}
                 date={`${finance.date.substring(
                   8,

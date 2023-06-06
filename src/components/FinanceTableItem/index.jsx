@@ -1,6 +1,6 @@
 import { TableRow, TableCell } from "@mui/material";
 
-export const TableItem = ({ date, categoryId, description, value }) => {
+export const FinanceTableItem = ({ date, categoryId, description, value }) => {
   return (
     <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
       <TableCell
