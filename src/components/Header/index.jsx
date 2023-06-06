@@ -1,9 +1,9 @@
 import { StyledHeader, StyledH2 } from "./styles";
 
-export const Header = () => {
+export const Header = ({ title }) => {
   return (
     <StyledHeader>
-      <StyledH2>Controle Financeiro</StyledH2>
+      <StyledH2>{title}</StyledH2>
     </StyledHeader>
   );
 };

@@ -8,7 +8,7 @@ export const Container = styled.div`
   left: 0px;
   width: 300px;
   left: ${(props) => (props.sidebar ? "0" : "-100%")};
-  animation: showSidebar 0.4s;
+  animation: showSidebar 0.6s;
   z-index: 1000;
 
   > svg {

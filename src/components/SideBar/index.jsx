@@ -12,8 +12,8 @@ export const SideBar = ({ active }) => {
     <Container sidebar={active}>
       <FaTimes onClick={closeSidebar} />
       <Content>
-        <SideBarItem Icon={FaHome} Text="Home" />
-        <SideBarItem Icon={FaChartBar} Text="Categorias" />
+        <SideBarItem Icon={FaHome} Text="Home" route="/" />
+        <SideBarItem Icon={FaChartBar} Text="Categorias" route="/categories" />
       </Content>
     </Container>
   );

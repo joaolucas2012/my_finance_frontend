@@ -27,7 +27,7 @@ export const AddFinanceContainer = ({ postItems }) => {
   };
 
   useEffect(() => {
-    api.get("http://localhost:8080/list/category").then((response) => {
+    api.get("/list/category").then((response) => {
       setCategoryName(response.data.Category.rows);
     });
   }, [postItems]);

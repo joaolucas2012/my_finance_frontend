@@ -32,18 +32,16 @@ export const Home = () => {
         false
       );
     } else {
-      api
-        .post("http://localhost:8080/create/finance", data)
-        .then((response) => {
-          api.get("http://localhost:8080/list/finance").then((resp) => {
-            setFinancesList(resp.data.Finance.rows);
-            makeBalance(resp.data);
-          });
-
-          response.status === 200
-            ? makeNotification("Movimentação adicionada com sucesso!", true)
-            : makeNotification("Falha ao adicionar movimentação!", false);
+      api.post("/create/finance", data).then((response) => {
+        api.get("/list/finance").then((resp) => {
+          setFinancesList(resp.data.Finance.rows);
+          makeBalance(resp.data);
         });
+
+        response.status === 200
+          ? makeNotification("Movimentação adicionada com sucesso!", true)
+          : makeNotification("Falha ao adicionar movimentação!", false);
+      });
     }
   };
 
@@ -54,16 +52,14 @@ export const Home = () => {
         false
       );
     } else {
-      api
-        .post("http://localhost:8080/create/category", data)
-        .then((response) => {
-          response.status === 200
-            ? makeNotification("Categoria adicionada com sucesso!", true)
-            : makeNotification(
-                "Falha ao adicionar categoria! Por favor, tente mais tarde!",
-                false
-              );
-        });
+      api.post("/create/category", data).then((response) => {
+        response.status === 200
+          ? makeNotification("Categoria adicionada com sucesso!", true)
+          : makeNotification(
+              "Falha ao adicionar categoria! Por favor, tente mais tarde!",
+              false
+            );
+      });
     }
   };
 
@@ -81,15 +77,15 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    api.get("http://localhost:8080/list/finance").then((response) => {
+    api.get("/list/finance").then((response) => {
       setFinancesList(response.data.Finance.rows);
     });
 
-    api.get("http://localhost:8080/get/financeBalance/14").then((response) => {
+    api.get("/get/financeBalance/14").then((response) => {
       setRevenue(response.data.balance);
     });
 
-    api.get("http://localhost:8080/get/financeBalance/13").then((response) => {
+    api.get("/get/financeBalance/13").then((response) => {
       setExpense(response.data.balance);
     });
   }, []);
@@ -148,7 +144,7 @@ export const Home = () => {
     <>
       <SideBarHeader />
 
-      <Header />
+      <Header title="Controle Financeiro" />
 
       <Information
         handleSearch={handleSearchFinancesByDate}
